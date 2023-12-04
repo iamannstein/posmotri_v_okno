@@ -41,8 +41,8 @@ ol {
 }
 
 .content {
-  max-width: 1140px;
-  max-height: 534px;
+  min-width: 1140px;
+  min-height: 534px;
   display: flex;
   align-items: flex-end;
   gap: 30px;
@@ -60,7 +60,6 @@ ol {
   grid-template-columns: 225px 1fr 1fr;
   align-items: flex-end;
   gap: 40px;
-
 }
 
 .search-form__fieldset {
@@ -94,12 +93,14 @@ ol {
   outline: none;
 }
 
-.search-form__textfield:hover {
+input[type='text']:hover {
   cursor: text;
 }
 
-.search-form__textfield:active {
-  border: 1px solid #fff;
+input[type='text']:active {
+  content: '';
+  outline: 1px solid #fff;
+  border: none;
 }
 
 .search-form__checkbox-list {
@@ -108,16 +109,14 @@ ol {
 }
 
 .search-form__label {
-  position: relative;
   display: flex;
   gap: 4px;
 }
 
-.search-form__label:has(:focus-visible)::after {
+.search-form__label:has(:focus-visible) {
   content: '';
-  position: absolute;
-  inset: -2px;
-  border: 1px solid #fff;
+  outline: 1px solid;
+  outline-offset: 1px;
 }
 
 .search-form__checkbox-list .search-form__label:hover {
@@ -135,10 +134,8 @@ ol {
   cursor: pointer;
 }
 
-input[type='checkbox']:active + span::after {
+input[type='checkbox']:checked + span::after {
   content: '';
-  position: absolute;
-  inset: 0;
   width: 16px;
   height: 16px;
   margin: 1px;
@@ -154,8 +151,7 @@ input[type='checkbox']:active + span::after {
   align-self: flex-start;
   gap: 26px;
   max-height: 534px;
-  min-width: 399px;
-  height: 100%;
+  max-width: 399px;
 }
 
 .title {
@@ -189,22 +185,23 @@ input[type='checkbox']:active + span::after {
   height: 100%;
 }
 
-.content__list-item:not(:last-child) {
-  margin-bottom: 30px;
-}
-
 .content__card-link {
   display: block;
-  position: relative;
   margin: 2px;
   text-decoration: none;
   outline: none;
 }
 
+.content__card-link:focus-visible {
+  content: '';
+  outline: 1px solid #fff;
+  outline-offset: 1px;
+}
+
 .content__video-card-description-container {
   width: 100%;
   height: 100%;
-  padding: 3px 2px;
+  padding-left: 3px;
 }
 
 .content__video-card-title {
@@ -218,7 +215,7 @@ input[type='checkbox']:active + span::after {
 }
 
 .content__video-card-description {
-  color: #FFF;
+  color: #fff;
   font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 18px;
   font-style: normal;
@@ -232,6 +229,10 @@ input[type='checkbox']:active + span::after {
   gap: 16px;
 }
 
+.content__list-item:not(:last-child) {
+  margin-bottom: 30px;
+}
+
 .content__video-card-thumbnail {
   max-width: 194px;
   max-height: 103px;
@@ -241,14 +242,6 @@ input[type='checkbox']:active + span::after {
   background-color: #545050;
 }
 
-.content__card-link:focus-visible::after {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  border: 1px solid #fff;
-  margin: 2px;
-}
-
 .content__card-link:hover {
   text-decoration: underline solid #fff;
   text-decoration-thickness: 1px;
@@ -256,7 +249,7 @@ input[type='checkbox']:active + span::after {
 }
 
 .content__card-link:active {
-  background-color: #545050;  
+  background-color: #545050;
 }
 
 .preloader {
@@ -275,7 +268,6 @@ input[type='checkbox']:active + span::after {
 } 
 
 .button {
-  position: relative;
   display: block;
   background-color: transparent;
   color: #fff;
@@ -288,26 +280,17 @@ input[type='checkbox']:active + span::after {
   cursor: pointer;
   padding: 5px;
   transition: background-color 0.6s;
-}
-
-.search-form__submit-button {
   width: 100%;
-}
-
-.more-button {
-  margin: 0 auto;
-  width: 98%;
 }
 
 .button:focus {
   outline: none;
 }
 
-.button:focus-visible::after {
+.button:focus-visible {
   content: '';
-  position: absolute;
-  inset: -3px;
-  border: 1px solid #fff;
+  outline: 1px solid;
+  outline-offset: 2px;
 }
 
 .button:hover {
@@ -318,17 +301,4 @@ input[type='checkbox']:active + span::after {
 
 button:active {
   background-color: #545050;
-}
-
-input[type='checkbox']:checked + span::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  width: 16px;
-  height: 16px;
-  margin: 1px;
-  background-size: contain;
-  background-color: #fff;
-  background-repeat: no-repeat;
-  background-position: center;
 }
