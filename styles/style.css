@@ -11,10 +11,10 @@ html {
 .page {
   display: flex;
   justify-content: center;
-
+  align-items: center;
   inline-size: 1200px;
   block-size: 100%;
-  margin: 0 auto;
+  margin: auto;
   color: #fff;
   font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 18px;
@@ -151,7 +151,9 @@ input[type='checkbox']:active + span::after {
 .content__details {
   display: flex;
   flex-direction: column;
+  align-self: flex-start;
   gap: 26px;
+  max-height: 534px;
   min-width: 399px;
   height: 100%;
 }
